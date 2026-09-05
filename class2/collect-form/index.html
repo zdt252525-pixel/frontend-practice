@@ -20,22 +20,80 @@
 <main>
     <section id="info">
         <h2>报名说明</h2>
-        <p>社团面向全校本科生开放，零基础也可以报名。</p>
+        <p>社团面向全校本科生开放，零基础也可以报名；提交后社团会通过邮箱通知面试时间。</p>
     </section>
 
     <section id="form">
         <h2>报名登记表</h2>
-        <!-- 这里暂时空，第二次再加form表单 -->
+        <form>
+            <div>
+                <label for="username">姓名（必填）：</label>
+                <input type="text" id="username" name="username" required maxlength="10">
+            </div>
+
+            <div>
+                <label for="mail">联系邮箱（必填）：</label>
+                <input type="email" id="mail" name="mail" required>
+            </div>
+
+            <div>
+                <label for="stuId">学号：</label>
+                <input type="number" id="stuId" name="stuId" min="20260000" max="20269999">
+            </div>
+
+            <div>
+                <p>性别：</p>
+                <label><input type="radio" name="gender" value="man">男</label>
+                <label><input type="radio" name="gender" value="woman">女</label>
+            </div>
+
+            <div>
+                <p>感兴趣方向（可多选）：</p>
+                <label><input type="checkbox" name="interest" value="web">网页开发</label>
+                <label><input type="checkbox" name="interest" value="game">游戏开发</label>
+                <label><input type="checkbox" name="interest" value="ai">人工智能</label>
+            </div>
+
+            <div>
+                <label for="department">意向部门：</label>
+                <select id="department" name="department">
+                    <option value="">请选择部门</option>
+                    <option value="tech">技术部</option>
+                    <option value="media">宣传部</option>
+                    <option value="organ">组织部</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="desc">个人简介：</label>
+                <textarea id="desc" name="desc" maxlength="200"></textarea>
+            </div>
+
+            <div>
+                <label for="avatar">上传一寸照片：</label>
+                <input type="file" id="avatar" name="avatar">
+            </div>
+
+            <div>
+                <label for="joinDate">期望入社时间：</label>
+                <input type="date" id="joinDate" name="joinDate">
+            </div>
+
+            <div>
+                <button type="submit">提交报名</button>
+                <button type="reset">重置表单</button>
+            </div>
+        </form>
     </section>
 
     <section id="tip">
         <h2>报名须知</h2>
-        <p>提交表单代表确认自愿报名；信息务必真实。</p>
+        <p>提交表单代表你确认自愿报名；信息务必真实，学号填写本年级2026开头。</p>
     </section>
 </main>
 
 <footer>
-    <p>©2026计算机爱好者社团</p>
+    <p>©2026计算机爱好者社团 联系：club@example.com</p>
 </footer>
 </body>
 </html>
