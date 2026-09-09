@@ -15,15 +15,21 @@
       --ink: #1e293b;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-    section, footer { scroll-margin-top: 4.5rem; }
+    section,
+    footer {
+      scroll-margin-top: 4.5rem;
+    }
 
     body {
       overflow-x: hidden;
       color: var(--ink);
       background: var(--cream);
-      font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
     }
 
     .navbar {
@@ -32,7 +38,9 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
     }
 
-    .hero { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 45%, #a5f3fc 100%); }
+    .hero {
+      background: linear-gradient(135deg, #ecfeff 0%, #cffafe 45%, #a5f3fc 100%);
+    }
 
     .hero-title {
       font-size: clamp(2rem, 5vw, 3.5rem);
@@ -58,7 +66,9 @@
       background: linear-gradient(90deg, var(--gold), transparent);
     }
 
-    .nav-link { position: relative; }
+    .nav-link {
+      position: relative;
+    }
 
     .nav-link::after {
       content: "";
@@ -75,7 +85,9 @@
     }
 
     .nav-link:hover::after,
-    .nav-link.active::after { transform: scaleX(1); }
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
 
     .card {
       border: 0;
@@ -102,32 +114,37 @@
       text-decoration: underline;
     }
 
-    .food-1 { background: linear-gradient(135deg, #fda4af, #e11d48); }
-    .food-2 { background: linear-gradient(135deg, #fde68a, #d97706); }
-    .food-3 { background: linear-gradient(135deg, #a7f3d0, #059669); }
-    .food-4 { background: linear-gradient(135deg, #bae6fd, #0284c7); }
-    .food-5 { background: linear-gradient(135deg, #ddd6fe, #7c3aed); }
-    .food-6 { background: linear-gradient(135deg, #fbcfe8, #db2777); }
-
-    .view-1 { background: linear-gradient(135deg, #a5f3fc, #0891b2); }
-    .view-2 { background: linear-gradient(135deg, #a7f3d0, #15803d); }
-    .view-3 { background: linear-gradient(135deg, #fde68a, #b45309); }
-    .view-4 { background: linear-gradient(135deg, #fecaca, #b91c1c); }
+    .food-1 { background-image: url("images/5-rushan.jpg"); }
+    .food-2 { background-image: url("images/6-ersi.jpg"); }
+    .food-3 { background-image: url("images/7suanlayu-.jpg"); }
+    .food-4 { background-image: url("images/8-shaguoyu.jpg"); }
+    .food-5 { background-image: url("images/9-popobaba.jpg"); }
+    .food-6 { background-image: url("images/10-xianhuabing.jpg"); }
 
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 24px rgba(14, 116, 144, 0.14);
     }
 
+    .view-1 { background-image: url("images/1-erhai.jpg"); }
+    .view-2 { background-image: url("images/2-cangshan.jpg"); }
+    .view-3 { background-image: url("images/3-santa.jpg"); }
+    .view-4 { background-image: url("images/4-gucheng.jpg"); }
+
     .accordion-button:not(.collapsed) {
       background: var(--cream);
       color: var(--brand-dark);
     }
 
-    footer { background: #0f172a; color: #cbd5e1; }
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+    }
 
     @media (max-width: 575.98px) {
-      .food-img { height: 150px; }
+      .food-img {
+        height: 150px;
+      }
     }
   </style>
 </head>
@@ -137,9 +154,15 @@
       <a class="navbar-brand fw-bold" href="#">
         <span class="me-1">🏔️</span>风花雪月 · 大理
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false"
-        aria-label="切换导航">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navMenu"
+        aria-controls="navMenu"
+        aria-expanded="false"
+        aria-label="切换导航"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
@@ -180,114 +203,96 @@
       <div class="row g-4">
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="card h-100">
-            <div class="food-img food-1"></div>
+            <div class="food-img food-1" role="img" aria-label="烤乳扇"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc1"
-                  role="button" aria-expanded="false" aria-controls="foodDesc1">烤乳扇</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc1" role="button" aria-expanded="false" aria-controls="foodDesc1">烤乳扇</a>
               </h3>
               <span class="badge text-bg-danger mb-2">白族小吃</span>
               <div class="collapse" id="foodDesc1">
                 <p class="card-text text-secondary">牛奶炼成的薄片，炭火一烤刷上玫瑰酱，奶香浓郁、外脆内软。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#foodDesc1" role="button" aria-expanded="false"
-                aria-controls="foodDesc1">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#foodDesc1" role="button" aria-expanded="false" aria-controls="foodDesc1">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="card h-100">
-            <div class="food-img food-2"></div>
+            <div class="food-img food-2" role="img" aria-label="巍山𤆵肉饵丝"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc2"
-                  role="button" aria-expanded="false" aria-controls="foodDesc2">巍山𤆵肉饵丝</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc2" role="button" aria-expanded="false" aria-controls="foodDesc2">巍山𤆵肉饵丝</a>
               </h3>
               <span class="badge text-bg-danger mb-2">经典早点</span>
               <div class="collapse" id="foodDesc2">
                 <p class="card-text text-secondary">慢炖𤆵肉盖在软糯饵丝上，是大理人最踏实的早点。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#foodDesc2" role="button" aria-expanded="false"
-                aria-controls="foodDesc2">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#foodDesc2" role="button" aria-expanded="false" aria-controls="foodDesc2">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="card h-100">
-            <div class="food-img food-3"></div>
+            <div class="food-img food-3" role="img" aria-label="大理酸辣鱼"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc3"
-                  role="button" aria-expanded="false" aria-controls="foodDesc3">大理酸辣鱼</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc3" role="button" aria-expanded="false" aria-controls="foodDesc3">大理酸辣鱼</a>
               </h3>
               <span class="badge text-bg-danger mb-2">白族名菜</span>
               <div class="collapse" id="foodDesc3">
                 <p class="card-text text-secondary">洱海鱼配酸木瓜、梅子煮出酸辣鲜，是白族待客的头道菜。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#foodDesc3" role="button" aria-expanded="false"
-                aria-controls="foodDesc3">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#foodDesc3" role="button" aria-expanded="false" aria-controls="foodDesc3">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="card h-100">
-            <div class="food-img food-4"></div>
+            <div class="food-img food-4" role="img" aria-label="砂锅鱼"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc4"
-                  role="button" aria-expanded="false" aria-controls="foodDesc4">砂锅鱼</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc4" role="button" aria-expanded="false" aria-controls="foodDesc4">砂锅鱼</a>
               </h3>
               <span class="badge text-bg-warning mb-2">地道炖菜</span>
               <div class="collapse" id="foodDesc4">
                 <p class="card-text text-secondary">祥云土锅慢慢炖，豆腐、腊肉、菌子一锅鲜。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#foodDesc4" role="button" aria-expanded="false"
-                aria-controls="foodDesc4">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#foodDesc4" role="button" aria-expanded="false" aria-controls="foodDesc4">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="card h-100">
-            <div class="food-img food-5"></div>
+            <div class="food-img food-5" role="img" aria-label="喜洲破酥粑粑"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc5"
-                  role="button" aria-expanded="false" aria-controls="foodDesc5">喜洲破酥粑粑</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc5" role="button" aria-expanded="false" aria-controls="foodDesc5">喜洲破酥粑粑</a>
               </h3>
               <span class="badge text-bg-warning mb-2">古镇小吃</span>
               <div class="collapse" id="foodDesc5">
                 <p class="card-text text-secondary">炭火烤出的千层酥饼，咸甜两味，喜洲古镇的招牌。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#foodDesc5" role="button" aria-expanded="false"
-                aria-controls="foodDesc5">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#foodDesc5" role="button" aria-expanded="false" aria-controls="foodDesc5">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="card h-100">
-            <div class="food-img food-6"></div>
+            <div class="food-img food-6" role="img" aria-label="鲜花饼"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc6"
-                  role="button" aria-expanded="false" aria-controls="foodDesc6">鲜花饼</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc6" role="button" aria-expanded="false" aria-controls="foodDesc6">鲜花饼</a>
               </h3>
               <span class="badge text-bg-warning mb-2">特色点心</span>
               <div class="collapse" id="foodDesc6">
                 <p class="card-text text-secondary">云南玫瑰花瓣做馅，咬开满是花香，伴手礼首选。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#foodDesc6" role="button" aria-expanded="false"
-                aria-controls="foodDesc6">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#foodDesc6" role="button" aria-expanded="false" aria-controls="foodDesc6">看介绍</a>
             </div>
           </div>
         </div>
@@ -299,76 +304,64 @@
       <div class="row g-4">
         <div class="col-12 col-sm-6 col-xl-3">
           <div class="card h-100">
-            <div class="food-img view-1"></div>
+            <div class="food-img view-1" role="img" aria-label="洱海"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc1"
-                  role="button" aria-expanded="false" aria-controls="viewDesc1">洱海</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc1" role="button" aria-expanded="false" aria-controls="viewDesc1">洱海</a>
               </h3>
               <span class="badge text-bg-primary mb-2">最治愈 · 环湖骑行</span>
               <div class="collapse" id="viewDesc1">
                 <p class="card-text text-secondary">沿着生态廊道骑行，日出时海鸥和苍山同框。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#viewDesc1" role="button" aria-expanded="false"
-                aria-controls="viewDesc1">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#viewDesc1" role="button" aria-expanded="false" aria-controls="viewDesc1">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-xl-3">
           <div class="card h-100">
-            <div class="food-img view-2"></div>
+            <div class="food-img view-2" role="img" aria-label="苍山"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc2"
-                  role="button" aria-expanded="false" aria-controls="viewDesc2">苍山</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc2" role="button" aria-expanded="false" aria-controls="viewDesc2">苍山</a>
               </h3>
               <span class="badge text-bg-success mb-2">最壮阔 · 十九峰</span>
               <div class="collapse" id="viewDesc2">
                 <p class="card-text text-secondary">十九峰绵延如屏，乘洗马潭索道可上到高山之巅看雪线。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#viewDesc2" role="button" aria-expanded="false"
-                aria-controls="viewDesc2">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#viewDesc2" role="button" aria-expanded="false" aria-controls="viewDesc2">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-xl-3">
           <div class="card h-100">
-            <div class="food-img view-3"></div>
+            <div class="food-img view-3" role="img" aria-label="崇圣寺三塔"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc3"
-                  role="button" aria-expanded="false" aria-controls="viewDesc3">崇圣寺三塔</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc3" role="button" aria-expanded="false" aria-controls="viewDesc3">崇圣寺三塔</a>
               </h3>
               <span class="badge text-bg-warning mb-2">最地标 · 千年古塔</span>
               <div class="collapse" id="viewDesc3">
                 <p class="card-text text-secondary">千寻塔与两座小塔历经千年，倒映在聚影池中，是大理名片。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#viewDesc3" role="button" aria-expanded="false"
-                aria-controls="viewDesc3">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#viewDesc3" role="button" aria-expanded="false" aria-controls="viewDesc3">看介绍</a>
             </div>
           </div>
         </div>
 
         <div class="col-12 col-sm-6 col-xl-3">
           <div class="card h-100">
-            <div class="food-img view-4"></div>
+            <div class="food-img view-4" role="img" aria-label="大理古城"></div>
             <div class="card-body">
               <h3 class="card-title h5 mb-1">
-                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc4"
-                  role="button" aria-expanded="false" aria-controls="viewDesc4">大理古城</a>
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc4" role="button" aria-expanded="false" aria-controls="viewDesc4">大理古城</a>
               </h3>
               <span class="badge text-bg-info mb-2">最烟火 · 青石板路</span>
               <div class="collapse" id="viewDesc4">
                 <p class="card-text text-secondary">青石板路串起五华楼与人民路夜市，白族风情扑面而来。</p>
               </div>
-              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
-                href="#viewDesc4" role="button" aria-expanded="false"
-                aria-controls="viewDesc4">看介绍</a>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" href="#viewDesc4" role="button" aria-expanded="false" aria-controls="viewDesc4">看介绍</a>
             </div>
           </div>
         </div>
@@ -422,8 +415,9 @@
       <div class="accordion shadow-sm rounded-4" id="tipAccordion">
         <div class="accordion-item">
           <h3 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#tipOne">什么季节去大理最合适？</button>
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tipOne">
+              什么季节去大理最合适？
+            </button>
           </h3>
           <div id="tipOne" class="accordion-collapse collapse show" data-bs-parent="#tipAccordion">
             <div class="accordion-body">
@@ -433,8 +427,9 @@
         </div>
         <div class="accordion-item">
           <h3 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#tipTwo">三天两晚怎么玩不赶路？</button>
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tipTwo">
+              三天两晚怎么玩不赶路？
+            </button>
           </h3>
           <div id="tipTwo" class="accordion-collapse collapse" data-bs-parent="#tipAccordion">
             <div class="accordion-body">
