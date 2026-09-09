@@ -4,94 +4,455 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>风花雪月 · 我的家乡大理</title>
+  <link rel="icon" href="data:,">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #0e7490;
+      --brand-dark: #155e75;
+      --gold: #f59e0b;
+      --cream: #f0f9ff;
+      --ink: #1e293b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    section, footer { scroll-margin-top: 4.5rem; }
+
+    body {
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .hero { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 45%, #a5f3fc 100%); }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--brand), var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .nav-link { position: relative; }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      right: 0.5rem;
+      bottom: 0.2rem;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--brand);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after { transform: scaleX(1); }
+
+    .card {
+      border: 0;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .food-img {
+      height: 190px;
+      background-size: cover;
+      background-position: center;
+      border-radius: calc(var(--bs-card-border-radius) - 1px)
+        calc(var(--bs-card-border-radius) - 1px) 0 0;
+    }
+
+    .card-title-link {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .card-title-link:hover {
+      color: var(--brand);
+      text-decoration: underline;
+    }
+
+    .food-1 { background: linear-gradient(135deg, #fda4af, #e11d48); }
+    .food-2 { background: linear-gradient(135deg, #fde68a, #d97706); }
+    .food-3 { background: linear-gradient(135deg, #a7f3d0, #059669); }
+    .food-4 { background: linear-gradient(135deg, #bae6fd, #0284c7); }
+    .food-5 { background: linear-gradient(135deg, #ddd6fe, #7c3aed); }
+    .food-6 { background: linear-gradient(135deg, #fbcfe8, #db2777); }
+
+    .view-1 { background: linear-gradient(135deg, #a5f3fc, #0891b2); }
+    .view-2 { background: linear-gradient(135deg, #a7f3d0, #15803d); }
+    .view-3 { background: linear-gradient(135deg, #fde68a, #b45309); }
+    .view-4 { background: linear-gradient(135deg, #fecaca, #b91c1c); }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(14, 116, 144, 0.14);
+    }
+
+    .accordion-button:not(.collapsed) {
+      background: var(--cream);
+      color: var(--brand-dark);
+    }
+
+    footer { background: #0f172a; color: #cbd5e1; }
+
+    @media (max-width: 575.98px) {
+      .food-img { height: 150px; }
+    }
+  </style>
 </head>
 <body>
-  <header id="home">
-    <h1>风花雪月 · 我的家乡大理</h1>
-    <p>苍山为屏，洱海为镜：下关风、上关花、苍山雪、洱海月。</p>
-    <nav aria-label="主导航">
-      <ul>
-        <li><a href="#home">首页</a></li>
-        <li><a href="#flavors">家乡味</a></li>
-        <li><a href="#views">好风光</a></li>
-        <li><a href="#rank">人气榜</a></li>
-        <li><a href="#tips">旅行贴士</a></li>
-      </ul>
-    </nav>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <span class="me-1">🏔️</span>风花雪月 · 大理
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false"
+        aria-label="切换导航">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#home">首页</a></li>
+          <li class="nav-item"><a class="nav-link" href="#flavors">家乡味</a></li>
+          <li class="nav-item"><a class="nav-link" href="#views">好风光</a></li>
+          <li class="nav-item"><a class="nav-link" href="#rank">人气榜</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tips">旅行贴士</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home" class="hero py-5">
+    <div class="container py-4 text-center">
+      <span class="badge rounded-pill text-bg-info mb-3">我的家乡 · 云南大理</span>
+      <h1 class="hero-title mb-3">苍山为屏，洱海为镜</h1>
+      <p class="lead mx-auto mb-4" style="max-width: 34rem">
+        风花雪月是它的名片：下关风、上关花、苍山雪、洱海月。
+        跟我一起，尝尝白族味道，看看高原明珠。
+      </p>
+      <div class="d-flex flex-wrap gap-2 justify-content-center mb-4">
+        <a href="#flavors" class="btn btn-primary px-4">尝家乡味</a>
+        <a href="#views" class="btn btn-outline-secondary px-4">看好风光</a>
+      </div>
+      <div class="d-flex flex-wrap gap-3 justify-content-center text-secondary small">
+        <span>⭐ 白族三道茶</span>
+        <span>📍 洱海环湖 130km</span>
+        <span>🗓️ 四季皆宜</span>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section id="flavors" aria-labelledby="flavors-title">
-      <h2 id="flavors-title">六道大理家乡味</h2>
-      <article>
-        <h3>烤乳扇</h3>
-        <p>牛奶炼成的薄片，炭火一烤刷上玫瑰酱，奶香浓郁、外脆内软。</p>
-      </article>
-      <article>
-        <h3>巍山𤆵肉饵丝</h3>
-        <p>慢炖𤆵肉盖在软糯饵丝上，是大理人最踏实的早点。</p>
-      </article>
-      <article>
-        <h3>大理酸辣鱼</h3>
-        <p>洱海鱼配酸木瓜、梅子煮出酸辣鲜，是白族待客的头道菜。</p>
-      </article>
-      <article>
-        <h3>砂锅鱼</h3>
-        <p>祥云土锅慢慢炖，豆腐、腊肉、菌子一锅鲜。</p>
-      </article>
-      <article>
-        <h3>喜洲破酥粑粑</h3>
-        <p>炭火烤出的千层酥饼，咸甜两味，喜洲古镇的招牌。</p>
-      </article>
-      <article>
-        <h3>鲜花饼</h3>
-        <p>云南玫瑰花瓣做馅，咬开满是花香，伴手礼首选。</p>
-      </article>
+  <main class="container py-5">
+    <section id="flavors" class="mb-5">
+      <h2 class="section-title h3 mb-4"><span>🥢</span>六道大理家乡味</h2>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="food-img food-1"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc1"
+                  role="button" aria-expanded="false" aria-controls="foodDesc1">烤乳扇</a>
+              </h3>
+              <span class="badge text-bg-danger mb-2">白族小吃</span>
+              <div class="collapse" id="foodDesc1">
+                <p class="card-text text-secondary">牛奶炼成的薄片，炭火一烤刷上玫瑰酱，奶香浓郁、外脆内软。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#foodDesc1" role="button" aria-expanded="false"
+                aria-controls="foodDesc1">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="food-img food-2"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc2"
+                  role="button" aria-expanded="false" aria-controls="foodDesc2">巍山𤆵肉饵丝</a>
+              </h3>
+              <span class="badge text-bg-danger mb-2">经典早点</span>
+              <div class="collapse" id="foodDesc2">
+                <p class="card-text text-secondary">慢炖𤆵肉盖在软糯饵丝上，是大理人最踏实的早点。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#foodDesc2" role="button" aria-expanded="false"
+                aria-controls="foodDesc2">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="food-img food-3"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc3"
+                  role="button" aria-expanded="false" aria-controls="foodDesc3">大理酸辣鱼</a>
+              </h3>
+              <span class="badge text-bg-danger mb-2">白族名菜</span>
+              <div class="collapse" id="foodDesc3">
+                <p class="card-text text-secondary">洱海鱼配酸木瓜、梅子煮出酸辣鲜，是白族待客的头道菜。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#foodDesc3" role="button" aria-expanded="false"
+                aria-controls="foodDesc3">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="food-img food-4"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc4"
+                  role="button" aria-expanded="false" aria-controls="foodDesc4">砂锅鱼</a>
+              </h3>
+              <span class="badge text-bg-warning mb-2">地道炖菜</span>
+              <div class="collapse" id="foodDesc4">
+                <p class="card-text text-secondary">祥云土锅慢慢炖，豆腐、腊肉、菌子一锅鲜。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#foodDesc4" role="button" aria-expanded="false"
+                aria-controls="foodDesc4">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="food-img food-5"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc5"
+                  role="button" aria-expanded="false" aria-controls="foodDesc5">喜洲破酥粑粑</a>
+              </h3>
+              <span class="badge text-bg-warning mb-2">古镇小吃</span>
+              <div class="collapse" id="foodDesc5">
+                <p class="card-text text-secondary">炭火烤出的千层酥饼，咸甜两味，喜洲古镇的招牌。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#foodDesc5" role="button" aria-expanded="false"
+                aria-controls="foodDesc5">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card h-100">
+            <div class="food-img food-6"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#foodDesc6"
+                  role="button" aria-expanded="false" aria-controls="foodDesc6">鲜花饼</a>
+              </h3>
+              <span class="badge text-bg-warning mb-2">特色点心</span>
+              <div class="collapse" id="foodDesc6">
+                <p class="card-text text-secondary">云南玫瑰花瓣做馅，咬开满是花香，伴手礼首选。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#foodDesc6" role="button" aria-expanded="false"
+                aria-controls="foodDesc6">看介绍</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="views" aria-labelledby="views-title">
-      <h2 id="views-title">四大必看风光</h2>
-      <article>
-        <h3>洱海</h3>
-        <p>沿着生态廊道骑行，日出时海鸥和苍山同框。</p>
-      </article>
-      <article>
-        <h3>苍山</h3>
-        <p>十九峰绵延如屏，乘洗马潭索道可上到高山之巅看雪线。</p>
-      </article>
-      <article>
-        <h3>崇圣寺三塔</h3>
-        <p>千寻塔与两座小塔历经千年，倒映在聚影池中，是大理名片。</p>
-      </article>
-      <article>
-        <h3>大理古城</h3>
-        <p>青石板路串起五华楼与人民路夜市，白族风情扑面而来。</p>
-      </article>
+    <section id="views" class="mb-5">
+      <h2 class="section-title h3 mb-4"><span>🏞️</span>四大必看风光</h2>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card h-100">
+            <div class="food-img view-1"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc1"
+                  role="button" aria-expanded="false" aria-controls="viewDesc1">洱海</a>
+              </h3>
+              <span class="badge text-bg-primary mb-2">最治愈 · 环湖骑行</span>
+              <div class="collapse" id="viewDesc1">
+                <p class="card-text text-secondary">沿着生态廊道骑行，日出时海鸥和苍山同框。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#viewDesc1" role="button" aria-expanded="false"
+                aria-controls="viewDesc1">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card h-100">
+            <div class="food-img view-2"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc2"
+                  role="button" aria-expanded="false" aria-controls="viewDesc2">苍山</a>
+              </h3>
+              <span class="badge text-bg-success mb-2">最壮阔 · 十九峰</span>
+              <div class="collapse" id="viewDesc2">
+                <p class="card-text text-secondary">十九峰绵延如屏，乘洗马潭索道可上到高山之巅看雪线。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#viewDesc2" role="button" aria-expanded="false"
+                aria-controls="viewDesc2">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card h-100">
+            <div class="food-img view-3"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc3"
+                  role="button" aria-expanded="false" aria-controls="viewDesc3">崇圣寺三塔</a>
+              </h3>
+              <span class="badge text-bg-warning mb-2">最地标 · 千年古塔</span>
+              <div class="collapse" id="viewDesc3">
+                <p class="card-text text-secondary">千寻塔与两座小塔历经千年，倒映在聚影池中，是大理名片。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#viewDesc3" role="button" aria-expanded="false"
+                aria-controls="viewDesc3">看介绍</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card h-100">
+            <div class="food-img view-4"></div>
+            <div class="card-body">
+              <h3 class="card-title h5 mb-1">
+                <a class="card-title-link" data-bs-toggle="collapse" href="#viewDesc4"
+                  role="button" aria-expanded="false" aria-controls="viewDesc4">大理古城</a>
+              </h3>
+              <span class="badge text-bg-info mb-2">最烟火 · 青石板路</span>
+              <div class="collapse" id="viewDesc4">
+                <p class="card-text text-secondary">青石板路串起五华楼与人民路夜市，白族风情扑面而来。</p>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"
+                href="#viewDesc4" role="button" aria-expanded="false"
+                aria-controls="viewDesc4">看介绍</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="rank" aria-labelledby="rank-title">
-      <h2 id="rank-title">周末人气榜</h2>
-      <ol>
-        <li>才村码头看日出 —— 体验第 1 名</li>
-        <li>喜洲古镇 + 稻田 —— 拍照人气王</li>
-        <li>苍山洗马潭索道 —— 自然风光王</li>
-        <li>古城人民路夜市 —— 夜生活人气王</li>
-        <li>周城扎染体验 —— 非遗体验王</li>
-      </ol>
-      <p>白族三道茶“一苦二甜三回味”，是待客礼仪，也是大理人的人生哲学。</p>
+    <section id="rank" class="mb-5">
+      <h2 class="section-title h3 mb-4"><span>🏆</span>周末人气榜</h2>
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-7">
+          <ol class="list-group list-group-numbered shadow-sm rounded-4">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>才村码头看日出</span>
+              <span class="badge text-bg-primary rounded-pill">体验第 1 名</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>喜洲古镇 + 稻田</span>
+              <span class="badge text-bg-primary rounded-pill">拍照人气王</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>苍山洗马潭索道</span>
+              <span class="badge text-bg-primary rounded-pill">自然风光王</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>古城人民路夜市</span>
+              <span class="badge text-bg-primary rounded-pill">夜生活人气王</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>周城扎染体验</span>
+              <span class="badge text-bg-primary rounded-pill">非遗体验王</span>
+            </li>
+          </ol>
+        </div>
+        <div class="col-lg-5">
+          <div class="card h-100 text-bg-dark">
+            <div class="card-body d-flex flex-column justify-content-center">
+              <h3 class="card-title h5">🍵 喝什么最应景？</h3>
+              <p class="card-text small mb-3">
+                白族三道茶“一苦二甜三回味”，是待客礼仪，也是大理人的人生哲学。
+                配一碟乳扇，坐在古城屋顶看苍山日落，最是惬意。
+              </p>
+              <span class="badge text-bg-light align-self-start">白族非遗</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="tips" aria-labelledby="tips-title">
-      <h2 id="tips-title">旅行小贴士</h2>
-      <h3>什么季节去大理最合适？</h3>
-      <p>3–5 月风花雪月最分明，11 月到次年 2 月可看红嘴鸥。高原紫外线强，早晚温差大。</p>
-      <h3>三天两晚怎么玩不赶路？</h3>
-      <p>Day1 古城 + 崇圣寺三塔；Day2 环洱海（喜洲—双廊—挖色）；Day3 苍山索道或周城扎染。</p>
+    <section id="tips" class="mb-4">
+      <h2 class="section-title h3 mb-4"><span>📌</span>旅行小贴士</h2>
+      <div class="accordion shadow-sm rounded-4" id="tipAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#tipOne">什么季节去大理最合适？</button>
+          </h3>
+          <div id="tipOne" class="accordion-collapse collapse show" data-bs-parent="#tipAccordion">
+            <div class="accordion-body">
+              3–5 月风花雪月最分明，11 月到次年 2 月可看红嘴鸥。高原紫外线强，早晚温差大，记得防晒加外套。
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#tipTwo">三天两晚怎么玩不赶路？</button>
+          </h3>
+          <div id="tipTwo" class="accordion-collapse collapse" data-bs-parent="#tipAccordion">
+            <div class="accordion-body">
+              推荐：Day1 古城 + 崇圣寺三塔；Day2 环洱海（喜洲—双廊—挖色）；Day3 苍山索道或周城扎染后返程。
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>风花雪月 · 我的家乡大理 · 仅用于前端学习展示</p>
+  <footer class="py-4 mt-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>🏔️ 风花雪月 · 我的家乡大理</span>
+      <span class="small opacity-75">仅用于前端学习展示 · 图文为示例</span>
+    </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
