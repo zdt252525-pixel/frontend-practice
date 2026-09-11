@@ -42,3 +42,19 @@ console.log('加权平均分：', weightedAvg(valid));
 console.log('GPA（4.0制）：', calcGPA(valid));
 console.log('最高分课程：', best(valid));
 console.log('挂科名单：', failed(valid));
+const report = (list) => {
+  const valid = cleanCourses(list);
+  if (valid.length === 0) {
+    return '没有有效课程成绩';   
+  }
+  return `有效课程${valid.length}门，加权平均分${weightedAvg(valid)}，GPA（4.0制）${calcGPA(valid)}；
+单科最高：${best(valid).name} ${best(valid).score}分；
+挂科名单：${failed(valid).join('、') || '无'}`;
+};
+
+try {
+  console.log('\n========== 成绩报告 ==========');
+  console.log(report(courses));
+} catch (err) {
+  console.error('报告生成失败：', err.message);
+}
