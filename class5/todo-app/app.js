@@ -5,8 +5,12 @@ const tip = document.querySelector('#tip');
 const list = document.querySelector('#task-list');
 const filters = document.querySelector('.filters');
 
-let tasks = [];
+// 从 localStorage 恢复任务；首次访问无存档时用 '[]' 兜底，避免 JSON.parse(null) 报错
+let tasks = JSON.parse(localStorage.getItem('tasks') || '[]');
 let currentFilter = 'all'; // all / active / done
+
+// 持久化：把 tasks 写入 localStorage
+const save = () => localStorage.setItem('tasks', JSON.stringify(tasks));
 
 // 统一渲染：根据 currentFilter 过滤后重建列表
 const render = () => {
@@ -43,6 +47,7 @@ const render = () => {
     delBtn.addEventListener('click', (e) => {
       e.stopPropagation(); // 阻止冒泡，避免触发 li 的完成切换
       tasks = tasks.filter(t => t !== task);
+      save();
       render();
     });
     li.appendChild(delBtn);
@@ -50,6 +55,7 @@ const render = () => {
     // 点击任务切换完成状态
     li.addEventListener('click', () => {
       task.done = !task.done; // 改的是数组里的对象引用
+      save();
       render();
     });
 
@@ -66,6 +72,7 @@ form.addEventListener('submit', (e) => {
     return;
   }
   tasks.push({ text: text, done: false });
+  save();
   tip.textContent = '';
   input.value = '';
   render();
