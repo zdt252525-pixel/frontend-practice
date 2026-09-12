@@ -7,10 +7,15 @@ const tip = document.querySelector('#tip');
 const list = document.querySelector('#book-list');
 const searchInput = document.querySelector('#search-input');
 
-let books = [];
+// 从 localStorage 恢复数据；首次访问无存档时用 '[]' 兜底
+let books = JSON.parse(localStorage.getItem('books') || '[]');
 let searchKeyword = '';
 let editingId = null; // 当前正在编辑的书的 id
-let nextId = 1;
+// 根据已有数据的最大 id 推算下一个 id，避免恢复后 id 冲突
+let nextId = books.length > 0 ? Math.max(...books.map(b => b.id)) + 1 : 1;
+
+// 持久化：把 books 写入 localStorage
+const save = () => localStorage.setItem('books', JSON.stringify(books));
 
 // 统一渲染：根据搜索关键词过滤后重建列表
 const render = () => {
@@ -70,6 +75,7 @@ const render = () => {
         book.title = newTitle;
         book.author = newAuthor;
         book.rating = newRating;
+        save();
         tip.textContent = '';
         editingId = null;
         render();
@@ -119,6 +125,7 @@ const render = () => {
       delBtn.className = 'del';
       delBtn.addEventListener('click', () => {
         books = books.filter(b => b.id !== book.id);
+        save();
         render();
       });
 
@@ -150,6 +157,7 @@ form.addEventListener('submit', (e) => {
   }
 
   books.push({ id: nextId++, title: title, author: author, rating: rating });
+  save();
   tip.textContent = '';
   titleInput.value = '';
   authorInput.value = '';
