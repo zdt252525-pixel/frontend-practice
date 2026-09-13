@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>星球宇宙</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    #tip  { position: fixed; left: 16px; top: 12px; color: #cfe8ff; font: 14px sans-serif; pointer-events: none; }
+    #info { position: fixed; left: 16px; bottom: 14px; color: #ffd54f; font: bold 16px sans-serif; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div id="tip">第一步·环境：拖拽旋转 · 滚轮缩放</div>
+  <div id="info"></div>
+
+  <script src="../libs/three.min.js"></script>
+  <script src="../libs/OrbitControls.js"></script>
+  <script>
+    // ==================== 第一步：环境搭建 ====================
+    // （第二步：天体主体 —— 待续）
+    // （第三步：公转动画 + 点击交互 —— 待续）
+
+    // 场景：深空背景
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x05070f);
+
+    // 相机：45° 透视
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+    camera.position.set(0, 5, 11);
+
+    // 渲染器：开启抗锯齿
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // 轨道控制：鼠标拖拽旋转 + 滚轮缩放（带阻尼更顺滑）
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.minDistance = 3;
+    controls.maxDistance = 30;
+
+    // 光源：微弱环境光 + 太阳位置的点光源（太阳本体第二步加入）
+    scene.add(new THREE.AmbientLight(0xffffff, 0.25));
+    const sunLight = new THREE.PointLight(0xfff2c0, 1.8, 40);
+    scene.add(sunLight);
+
+    // 星空：1200 个点粒子随机铺满大球壳
+    const starGeo = new THREE.BufferGeometry();
+    const starPos = [];
+    for (let i = 0; i < 1200; i++) {
+      const r = 40 + Math.random() * 50;                 // 半径 40~90
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);      // 均匀球面分布
+      starPos.push(
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.cos(phi),
+        r * Math.sin(phi) * Math.sin(theta)
+      );
+    }
+    starGeo.setAttribute('position', new THREE.Float32BufferAttribute(starPos, 3));
+    const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.18 }));
+    scene.add(stars);
+
+    // 动画循环（第二步主体、第三步动画都在此处扩展）
+    const animate = () => {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    // 窗口 resize 适配
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
