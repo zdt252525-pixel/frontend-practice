@@ -64,9 +64,37 @@ const renderBarChart = (data) => {
   });
 };
 
-// 占位：第二步实现 Chart.js 折线图
+// Chart.js 折线图：借阅趋势
+let lineChart = null;
+
 const renderLineChart = (data) => {
-  // TODO: 第二步实现
+  if (lineChart !== null) {
+    lineChart.destroy();               // 防重复初始化
+  }
+  const ctx = document.querySelector('#line-chart');
+  lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.months,
+      datasets: data.series.map(s => ({
+        label: s.category,
+        data: s.counts,
+        borderWidth: 1
+      }))
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { display: true, text: '借阅趋势（单位：册）' }
+      }
+    }
+  });
 };
+
+// 窗口缩放时统一重算：ECharts 需手动 resize，Chart.js 默认响应式自动处理
+window.addEventListener('resize', () => {
+  if (barChart) barChart.resize();
+});
 
 loadData();
