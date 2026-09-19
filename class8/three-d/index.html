@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自习室管理系统</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 自定义CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">📚 自习室管理系统</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rooms">自习室</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stats">统计</a></li>
+                    <li class="nav-item"><a class="nav-link" href="three-d/scene.html">校园三维</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="hero text-center">
+        <div class="container">
+            <h1>欢迎使用自习室管理系统</h1>
+            <p class="lead">快速查询空闲自习室 · 查看使用统计 · 三维导览校园</p>
+        </div>
+    </section>
+    <section class="container mb-5">
+        <div class="row g-4">
+            <div class="col-md-3 col-sm-6">
+                <div class="card module-card text-center" onclick="location.href='#rooms'">
+                    <div class="card-body">
+                        <h2 class="text-primary">🔍</h2>
+                        <h5 class="card-title">自习室查询</h5>
+                        <p class="card-text text-muted">按楼层、开放状态筛选</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card module-card text-center" onclick="location.href='#stats'">
+                    <div class="card-body">
+                        <h2 class="text-success">📊</h2>
+                        <h5 class="card-title">使用统计</h5>
+                        <p class="card-text text-muted">查看各自习室使用量</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card module-card text-center" onclick="location.href='three-d/scene.html'">
+                    <div class="card-body">
+                        <h2 class="text-warning">🌍</h2>
+                        <h5 class="card-title">校园三维</h5>
+                        <p class="card-text text-muted">三维导览校园地标</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="card module-card text-center">
+                    <div class="card-body">
+                        <h2 class="text-info">ℹ️</h2>
+                        <h5 class="card-title">使用帮助</h5>
+                        <p class="card-text text-muted">了解系统使用方法</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="rooms" class="container mb-5">
+        <h2 class="section-title">自习室查询</h2>
+        <div class="placeholder">
+            <h4>自习室查询模块</h4>
+            <p>第二步：将在此处实现按楼层/开放状态筛选自习室列表</p>
+        </div>
+    </section>
+
+    <section id="stats" class="container mb-5">
+        <h2 class="section-title">使用统计</h2>
+        <div class="placeholder">
+            <h4>使用统计图表模块</h4>
+            <p>第二步：将在此处加载 data.json 渲染各自习室使用量柱状图</p>
+        </div>
+    </section>
+    <footer class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <small>&copy; 2026 自习室管理系统 | 课堂作业案例四</small>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
