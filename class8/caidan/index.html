@@ -126,22 +126,51 @@
         </div>
     </section>
 
-    <!-- 探索区块（占位） -->
+    <!-- 探索区块 -->
     <section id="explore" class="container mb-5">
         <h2 class="sec-title">校园探索</h2>
-        <div class="ph-box">
-            <h5>🔎 探索模块</h5>
-            <p>第二步：筛选器 + 建筑卡片列表</p>
+        <!-- 筛选器 -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <label class="form-label">按类型</label>
+                <select id="typeFilter" class="form-select">
+                    <option value="all">全部类型</option>
+                    <option value="教学">教学</option>
+                    <option value="学习">学习</option>
+                    <option value="实验">实验</option>
+                    <option value="办公">办公</option>
+                    <option value="体育">体育</option>
+                    <option value="生活">生活</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">按楼层</label>
+                <select id="floorFilter" class="form-select">
+                    <option value="all">全部楼层</option>
+                    <option value="2">2 楼及以下</option>
+                    <option value="3">3 楼</option>
+                    <option value="4">4 楼</option>
+                    <option value="5">5 楼</option>
+                    <option value="6">6 楼及以上</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">开放状态</label>
+                <select id="statusFilter" class="form-select">
+                    <option value="all">全部</option>
+                    <option value="open">仅开放中</option>
+                    <option value="closed">仅已关闭</option>
+                </select>
+            </div>
         </div>
+        <!-- 建筑卡片列表 -->
+        <div id="buildingList" class="row"></div>
     </section>
 
-    <!-- 统计区块（占位） -->
+    <!-- 统计区块 -->
     <section id="stats" class="container mb-5">
         <h2 class="sec-title">数据统计</h2>
-        <div class="ph-box">
-            <h5>📈 统计模块</h5>
-            <p>第二步：ECharts 柱状图 + data.json 数据</p>
-        </div>
+        <div id="barChart" style="width:100%; height:420px;"></div>
     </section>
 
     <!-- 页脚 -->
@@ -153,5 +182,9 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <!-- 自定义 JS -->
+    <script src="js/main.js"></script>
 </body>
 </html>

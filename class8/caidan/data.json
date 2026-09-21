@@ -1,0 +1,14 @@
+{
+  "source": "校园管理处 2026年9月建筑数据",
+  "unit": "人次/月",
+  "buildings": [
+    { "name": "主教学楼", "type": "教学", "floors": 5, "visits": 4800 },
+    { "name": "图书馆",   "type": "学习", "floors": 4, "visits": 6200 },
+    { "name": "实验楼A",  "type": "实验", "floors": 3, "visits": 2100 },
+    { "name": "实验楼B",  "type": "实验", "floors": 3, "visits": 1850 },
+    { "name": "行政楼",   "type": "办公", "floors": 4, "visits":  960 },
+    { "name": "体育馆",   "type": "体育", "floors": 2, "visits": 3400 },
+    { "name": "食堂",     "type": "生活", "floors": 2, "visits": 8800 },
+    { "name": "学生宿舍1","type": "生活", "floors": 6, "visits":   120 }
+  ]
+}
