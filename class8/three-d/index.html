@@ -6,10 +6,39 @@
     <title>自习室管理系统</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 自定义CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f5f7fa;
+        }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+        }
+        .module-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            height: 100%;
+            border: none;
+        }
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .section-title {
+            border-left: 4px solid #667eea;
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+        footer {
+            margin-top: 60px;
+        }
+    </style>
 </head>
 <body>
+    <!-- 导航栏 -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#home">📚 自习室管理系统</a>
@@ -26,12 +55,16 @@
             </div>
         </div>
     </nav>
+
+    <!-- 首页横幅 -->
     <section id="home" class="hero text-center">
         <div class="container">
             <h1>欢迎使用自习室管理系统</h1>
             <p class="lead">快速查询空闲自习室 · 查看使用统计 · 三维导览校园</p>
         </div>
     </section>
+
+    <!-- 模块卡片区 -->
     <section class="container mb-5">
         <div class="row g-4">
             <div class="col-md-3 col-sm-6">
@@ -72,26 +105,51 @@
             </div>
         </div>
     </section>
+
+    <!-- 自习室查询区块 -->
     <section id="rooms" class="container mb-5">
         <h2 class="section-title">自习室查询</h2>
-        <div class="placeholder">
-            <h4>自习室查询模块</h4>
-            <p>第二步：将在此处实现按楼层/开放状态筛选自习室列表</p>
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <label class="form-label">按楼层</label>
+                <select id="floorFilter" class="form-select">
+                    <option value="all">全部楼层</option>
+                    <option value="1">1 楼</option>
+                    <option value="2">2 楼</option>
+                    <option value="3">3 楼</option>
+                    <option value="4">4 楼</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">开放状态</label>
+                <select id="statusFilter" class="form-select">
+                    <option value="all">全部</option>
+                    <option value="open">仅开放中</option>
+                    <option value="closed">仅已关闭</option>
+                </select>
+            </div>
         </div>
+        <div id="roomList" class="row"></div>
     </section>
 
+    <!-- 使用统计区块 -->
     <section id="stats" class="container mb-5">
         <h2 class="section-title">使用统计</h2>
-        <div class="placeholder">
-            <h4>使用统计图表模块</h4>
-            <p>第二步：将在此处加载 data.json 渲染各自习室使用量柱状图</p>
-        </div>
+        <div id="usageChart" style="width: 100%; height: 420px;"></div>
     </section>
+
+    <!-- 页脚 -->
     <footer class="bg-dark text-white py-3">
         <div class="container text-center">
             <small>&copy; 2026 自习室管理系统 | 课堂作业案例四</small>
         </div>
     </footer>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <!-- 自定义JS -->
+    <script src="js/main.js"></script>
 </body>
 </html>

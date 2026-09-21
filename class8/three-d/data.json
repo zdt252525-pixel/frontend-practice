@@ -1,0 +1,14 @@
+{
+  "source": "自习室管理系统后台统计（2026年9月）",
+  "unit": "人次",
+  "rooms": [
+    { "name": "101自习室", "floor": 1, "capacity": 60, "usage": 1280, "open": true },
+    { "name": "102自习室", "floor": 1, "capacity": 50, "usage": 960, "open": true },
+    { "name": "201自习室", "floor": 2, "capacity": 80, "usage": 2100, "open": true },
+    { "name": "202自习室", "floor": 2, "capacity": 40, "usage": 540, "open": false },
+    { "name": "301自习室", "floor": 3, "capacity": 100, "usage": 3200, "open": true },
+    { "name": "302自习室", "floor": 3, "capacity": 70, "usage": 1850, "open": true },
+    { "name": "401自习室", "floor": 4, "capacity": 60, "usage": 720, "open": false },
+    { "name": "402自习室", "floor": 4, "capacity": 90, "usage": 2680, "open": true }
+  ]
+}
