@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园三维导览</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { overflow: hidden; font-family: "Microsoft YaHei", sans-serif; }
+        #scene-container { width: 100vw; height: 100vh; background: #87CEEB; }
+        .top-bar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white; padding: 12px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+        }
+        .top-bar a {
+            color: #fff; text-decoration: none;
+            padding: 6px 14px; background: #667eea; border-radius: 4px;
+        }
+        .top-bar a:hover { background: #5568d3; }
+        .info-panel {
+            position: fixed; bottom: 20px; left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px; border-radius: 8px;
+            max-width: 280px; z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .info-panel h4 { margin-bottom: 8px; color: #667eea; }
+        .info-panel p { font-size: 14px; color: #333; line-height: 1.6; }
+        .hint {
+            position: fixed; bottom: 20px; right: 20px;
+            background: rgba(0, 0, 0, 0.7); color: white;
+            padding: 10px 16px; border-radius: 6px; font-size: 13px; z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="scene-container"></div>
+
+    <div class="top-bar">
+        <h3>🌍 校园三维导览</h3>
+        <a href="index.html">← 返回首页</a>
+    </div>
+
+    <div class="info-panel">
+        <h4>🏫 校园地标</h4>
+        <p>鼠标左键拖动：旋转视角<br>
+        鼠标滚轮：缩放<br>
+        鼠标右键拖动：平移</p>
+    </div>
+
+    <div class="hint">Three.js 校园三维场景</div>
+
+    <!-- Three.js r128 -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+    <!-- OrbitControls -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- 场景脚本 -->
+    <script src="js/scene.js"></script>
+</body>
+</html>
